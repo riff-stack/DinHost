@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --teal: #2a9d80;
+  --teal-light: #33c49f;
+  --teal-dark: #1d7a61;
+  --bg: #0f0f0f;
+  --card: #181818;
+  --card2: #1e1e1e;
+  --border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: #ffffff;
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--teal-dark); }
+
+/* Hero glow */
+.hero-glow {
+  background: radial-gradient(
+    circle at 50% 40%,
+    rgba(42, 157, 128, 0.22) 0%,
+    rgba(42, 157, 128, 0.05) 50%,
+    transparent 70%
+  );
+}
+
+.hero-arc {
+  background: radial-gradient(ellipse at center, #222 30%, transparent 70%);
+}
+
+/* Gradient button */
+.btn-primary {
+  background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+  transition: opacity 0.2s, transform 0.15s;
+}
+.btn-primary:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* FAQ arrow animation */
+.faq-arrow {
+  transition: transform 0.25s ease;
+}
+.faq-arrow.open {
+  transform: rotate(90deg);
+}
+
+/* Card hover */
+.price-card {
+  transition: border-color 0.2s, transform 0.2s;
+}
+.price-card:hover {
+  border-color: rgba(42, 157, 128, 0.4);
+  transform: translateY(-2px);
+}
