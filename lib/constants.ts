@@ -12,7 +12,7 @@ export const WA_PHONE = "+62 857-0846-5791";
 
 // Link Grup WhatsApp "Coba Gratis"
 // ⚠️  GANTI dengan link grup kamu
-export const WA_GROUP = "https://chat.whatsapp.com/CriNkxGZODU7F40ZkIp3eB?mode=gi_t";
+export const WA_GROUP = "https://chat.whatsapp.com/GANTI_LINK_GRUP_DISINI";
 
 // Pricing
 export const PANEL_PRICES = [

@@ -2,79 +2,223 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── CSS Variables ─── */
 :root {
   --teal: #2a9d80;
   --teal-light: #33c49f;
   --teal-dark: #1d7a61;
-  --bg: #0f0f0f;
-  --card: #181818;
-  --card2: #1e1e1e;
-  --border: rgba(255, 255, 255, 0.08);
+  --teal-glow: rgba(42, 157, 128, 0.25);
+  --bg: #0a0a0a;
+  --bg2: #0f0f0f;
+  --card: #141414;
+  --card2: #181818;
+  --card3: #1e1e1e;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-teal: rgba(42, 157, 128, 0.35);
+  --font-display: var(--font-exo2), "Segoe UI", sans-serif;
+  --font-body: var(--font-jakarta), "Segoe UI", sans-serif;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* ─── Base ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   background-color: var(--bg);
   color: #ffffff;
-  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar { width: 6px; }
+/* ─── Typography ─── */
+.font-display { font-family: var(--font-display); }
+.font-body    { font-family: var(--font-body); }
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--teal-dark); }
 
-/* Hero glow */
-.hero-glow {
-  background: radial-gradient(
-    circle at 50% 40%,
-    rgba(42, 157, 128, 0.22) 0%,
-    rgba(42, 157, 128, 0.05) 50%,
-    transparent 70%
-  );
-}
-
-.hero-arc {
-  background: radial-gradient(ellipse at center, #222 30%, transparent 70%);
-}
-
-/* Gradient button */
+/* ─── Gradient Button ─── */
 .btn-primary {
-  background: linear-gradient(135deg, var(--teal), var(--teal-dark));
-  transition: opacity 0.2s, transform 0.15s;
+  background: linear-gradient(135deg, var(--teal-light), var(--teal-dark));
+  transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(42, 157, 128, 0.3);
 }
 .btn-primary:hover {
-  opacity: 0.88;
-  transform: translateY(-1px);
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(42, 157, 128, 0.45);
 }
-.btn-primary:active {
+.btn-primary:active { transform: translateY(0); }
+
+/* ─── Card Hover ─── */
+.price-card {
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+.price-card:hover {
+  border-color: var(--border-teal) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(42, 157, 128, 0.12);
+}
+
+/* ─── FAQ Arrow ─── */
+.faq-arrow { transition: transform 0.25s ease; }
+.faq-arrow.open { transform: rotate(90deg); }
+
+/* ─── Hero Background ─── */
+.hero-bg {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(42,157,128,0.18) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 40% at 20% 80%, rgba(42,157,128,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 60%, rgba(20,80,60,0.1) 0%, transparent 60%);
+}
+
+/* Dark arc for hero */
+.hero-arc {
+  background: radial-gradient(ellipse 90% 70% at 50% 20%, #1a1a1a 0%, transparent 65%);
+}
+
+/* ─── Noise texture overlay ─── */
+.noise::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.4;
+  z-index: 0;
+}
+
+/* ─── Glow Text ─── */
+.text-glow {
+  text-shadow: 0 0 40px rgba(42, 157, 128, 0.5), 0 0 80px rgba(42, 157, 128, 0.2);
+}
+
+/* ─── Teal Divider ─── */
+.teal-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--teal), transparent);
+  opacity: 0.4;
+}
+
+/* ─────────────────────────────────────
+   ANIMATIONS
+───────────────────────────────────── */
+
+/* Entrance: fade up */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Entrance: fade in */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Logo reveal */
+@keyframes logoReveal {
+  0%   { opacity: 0; transform: scale(0.85) translateY(-10px); filter: blur(8px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+}
+
+/* Pulse glow */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(42,157,128,0.3); }
+  50%       { box-shadow: 0 0 40px rgba(42,157,128,0.6); }
+}
+
+/* Shimmer */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Float */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+
+/* ─── Animation Classes ─── */
+.animate-fade-up {
+  animation: fadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.animate-fade-in {
+  animation: fadeIn 0.5s ease both;
+}
+.animate-logo {
+  animation: logoReveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+.pulse-glow {
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+
+/* Stagger delays */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+
+/* ─── Scroll Reveal ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.visible {
+  opacity: 1;
   transform: translateY(0);
 }
 
-/* FAQ arrow animation */
-.faq-arrow {
-  transition: transform 0.25s ease;
-}
-.faq-arrow.open {
-  transform: rotate(90deg);
+/* ─── Shimmer Text ─── */
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    var(--teal-light) 0%,
+    #7fffd4 40%,
+    var(--teal-light) 60%,
+    var(--teal-dark) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
 }
 
-/* Card hover */
-.price-card {
-  transition: border-color 0.2s, transform 0.2s;
+/* ─── Feature Icon Card ─── */
+.feature-card {
+  transition: border-color 0.25s, background 0.25s, transform 0.25s;
 }
-.price-card:hover {
-  border-color: rgba(42, 157, 128, 0.4);
+.feature-card:hover {
+  border-color: var(--border-teal) !important;
+  background: var(--card3) !important;
   transform: translateY(-2px);
+}
+
+/* ─── Teal badge ─── */
+.teal-badge {
+  background: rgba(42, 157, 128, 0.12);
+  border: 1px solid rgba(42, 157, 128, 0.3);
+  color: var(--teal-light);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 100px;
+  display: inline-block;
 }
