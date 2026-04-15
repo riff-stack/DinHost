@@ -12,7 +12,7 @@ export const WA_PHONE = "+62 877-9120-0371";
 
 // Link Grup WhatsApp "Coba Gratis"
 // ⚠️  GANTI dengan link grup kamu
-export const WA_GROUP = "https://chat.whatsapp.com/GANTI_LINK_GRUP_DISINI";
+export const WA_GROUP = "https://chat.whatsapp.com/CriNkxGZODU7F40ZkIp3eB";
 
 // Pricing
 export const PANEL_PRICES = [
