@@ -1,7 +1,7 @@
 "use client";
 
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { PANEL_PRICES, WA_CS } from "@/lib/constants";
+import { PANEL_PRICES, waOrder } from "@/lib/constants";
 
 export function SectionPill({ label }: { label: string }) {
   return (
@@ -22,10 +22,16 @@ export function SectionPill({ label }: { label: string }) {
   );
 }
 
-export function WaButton({ label = "Pesan Sekarang" }: { label?: string }) {
+export function WaButton({
+  label = "Pesan Sekarang",
+  href,
+}: {
+  label?: string;
+  href: string;
+}) {
   return (
     <a
-      href={WA_CS}
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
       className="btn-primary block w-full py-3.5 rounded-xl text-center font-bold text-[15px] text-white no-underline"
@@ -93,7 +99,7 @@ export default function PanelSection() {
                 /bulan
               </span>
             </div>
-            <WaButton />
+            <WaButton href={waOrder(item.title, item.price)} />
           </div>
         ))}
       </div>

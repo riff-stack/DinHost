@@ -1,7 +1,7 @@
 "use client";
 
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { ROLES } from "@/lib/constants";
+import { ROLES, waOrder } from "@/lib/constants";
 import { SectionPill, WaButton } from "./PanelSection";
 
 export default function RoleSection() {
@@ -27,7 +27,6 @@ export default function RoleSection() {
               borderColor: idx === 2 ? "rgba(42,157,128,0.3)" : "var(--border)",
             }}
           >
-            {/* "Best" badge for Owner Panel */}
             {idx === 2 && (
               <div
                 className="absolute top-4 right-4 teal-badge pulse-glow"
@@ -66,7 +65,8 @@ export default function RoleSection() {
                 </li>
               ))}
             </ul>
-            <WaButton />
+            {/* Pesan pre-filled sesuai nama role */}
+            <WaButton href={waOrder(role.title)} />
           </div>
         ))}
       </div>

@@ -6,13 +6,26 @@ export const SITE_NAME = "DinHost";
 export const SITE_DESCRIPTION =
   "Solusi Bot WhatsApp yang siap pakai dan mudah dikembangkan. Panel murah mulai Rp500/bulan.";
 
-// Link WhatsApp CS / Pesan Sekarang
-export const WA_CS = "https://wa.me/6287791200371";
-export const WA_PHONE = "+62 877-9120-0371";
+// Nomor WhatsApp CS (format internasional, tanpa +)
+export const WA_NUMBER = "6285708465791";
+export const WA_PHONE  = "+62 857-0846-5791";
+
+// Link WA CS default (tanpa pesan)
+export const WA_CS = `https://wa.me/${WA_NUMBER}`;
 
 // Link Grup WhatsApp "Coba Gratis"
 // ⚠️  GANTI dengan link grup kamu
-export const WA_GROUP = "https://chat.whatsapp.com/CriNkxGZODU7F40ZkIp3eB";
+export const WA_GROUP = "https://chat.whatsapp.com/GANTI_LINK_GRUP_DISINI";
+
+// ─── WA Deep Link Generator ───
+// Menghasilkan link wa.me dengan pesan pre-filled sesuai produk
+export function waOrder(productName: string, price?: string): string {
+  const msg = price
+    ? `Halo Admin DinHost 👋\n\nSaya ingin memesan *${productName}* (Rp${price}/bulan).\n\nMohon info langkah selanjutnya 🙏`
+    : `Halo Admin DinHost 👋\n\nSaya tertarik dengan *${productName}*.\n\nBoleh minta info lebih lanjut? 🙏`;
+
+  return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+}
 
 // Pricing
 export const PANEL_PRICES = [
