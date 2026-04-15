@@ -7,12 +7,12 @@ export const SITE_DESCRIPTION =
   "Solusi Bot WhatsApp yang siap pakai dan mudah dikembangkan. Panel murah mulai Rp500/bulan.";
 
 // Link WhatsApp CS / Pesan Sekarang
-export const WA_CS = "https://wa.me/6285708465791";
-export const WA_PHONE = "+62 857-0846-5791";
+export const WA_CS = "https://wa.me/6287791200371";
+export const WA_PHONE = "+62 877-9120-0371";
 
 // Link Grup WhatsApp "Coba Gratis"
 // ⚠️  GANTI dengan link grup kamu
-export const WA_GROUP = "https://chat.whatsapp.com/GANTI_LINK_GRUP_DISINI";
+export const WA_GROUP = "https://chat.whatsapp.com/CriNkxGZODU7F40ZkIp3eB";
 
 // Pricing
 export const PANEL_PRICES = [
